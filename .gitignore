@@ -46,3 +46,6 @@ local.properties
 flows/
 target/
 **/*.mflow
+
+output/
+input/
