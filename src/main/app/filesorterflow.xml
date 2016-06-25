@@ -8,18 +8,18 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <flow name="filesorterflowFlow">
-        <file:inbound-endpoint path="/Users/schlaepfer/AnypointStudio/workspace/filesorterflow/input" responseTimeout="10000" doc:name="File"/>
+        <file:inbound-endpoint path="C:\Projects\filesorterflow\input" responseTimeout="10000" doc:name="File"/>
         <file:file-to-byte-array-transformer doc:name="File to Byte Array"/>
         <custom-transformer class="com.schlaepfer.esb.mule.FileRecognizer" doc:name="FileRecognizer"/>
         <choice tracking:enable-default-events="true" doc:name="Choice">
             <when expression="#[message.outboundProperties['mimeType']=='image/jpeg']">
-                <file:outbound-endpoint path="/Users/schlaepfer/AnypointStudio/workspace/filesorterflow/output/jpeg" responseTimeout="10000" doc:name="jpeg"/>
+                <file:outbound-endpoint path="C:\Projects\filesorterflow\output\jpeg" responseTimeout="10000" doc:name="jpeg"/>
             </when>
             <when expression="#[message.outboundProperties['mimeType']=='image/gif']">
-                <file:outbound-endpoint path="/Users/schlaepfer/AnypointStudio/workspace/filesorterflow/output/gif" responseTimeout="10000" doc:name="gif"/>
+                <file:outbound-endpoint path="C:\Projects\filesorterflow\output\gif" responseTimeout="10000" doc:name="gif"/>
             </when>
             <otherwise>
-                <file:outbound-endpoint path="/Users/schlaepfer/AnypointStudio/workspace/filesorterflow/output/other" responseTimeout="10000" doc:name="Other"/>
+                <file:outbound-endpoint path="C:\Projects\filesorterflow\output\other" responseTimeout="10000" doc:name="Other"/>
             </otherwise>
         </choice>
     </flow>
